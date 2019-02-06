@@ -63,9 +63,39 @@ Namespace My.Resources
         '''<summary>
         '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property joy() As System.Drawing.Bitmap
+        Friend ReadOnly Property fan() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("joy", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("fan", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property joy1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("joy1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property thermominus() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("thermominus", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property thermoplus() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("thermoplus", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
