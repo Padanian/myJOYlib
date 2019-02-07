@@ -1,10 +1,14 @@
-﻿Public Class myJOYlib
+﻿
+Public Class myJOYlib
 
     Private m_value As Decimal
     Private m_HeatCoolAction As Integer
     Private m_FanAction As Integer
     Public Property nodeAddress As Integer
     Public Property locationRecognition As Integer
+    Shadows Event MouseEnter(ByVal sender As Object, ByVal e As EventArgs)
+    Shadows Event MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
+    Private ClickNo As Integer
 
     Public Property Value As Decimal
         Get
@@ -92,6 +96,39 @@
         FanAction = 0
         nodeAddress = 32
         locationRecognition = 0
+
+        pbFanAction.Visible = False
+        pbHeatCoolAction.Visible = False
+        Me.Size = New Size(31, 56)
+
+        lblTemp.Font = New Font("Tahoma", 5, FontStyle.Regular)
+        lblTemp.Location = New Point(5, 7)
+        lblFanAction.Visible = False
+
+
     End Sub
+    Public Sub Me_MouseMove(ByVal sender As Object, ByVal e As EventArgs) Handles PictureBox1.MouseHover
+
+        If ClientRectangle.Contains(PointToClient(Control.MousePosition)) And Me.Size.Width <> 94 Then
+            pbFanAction.Visible = True
+            pbHeatCoolAction.Visible = True
+            Me.Size = New Size(94, 168)
+
+            lblTemp.Font = New Font("Tahoma", 12, FontStyle.Bold)
+            lblTemp.Location = New Point(17, 22)
+            lblFanAction.Visible = True
+        Else
+            pbFanAction.Visible = False
+            pbHeatCoolAction.Visible = False
+            Me.Size = New Size(31, 56)
+
+            lblTemp.Font = New Font("Tahoma", 5, FontStyle.Bold)
+            lblTemp.Location = New Point(5, 7)
+            lblFanAction.Visible = False
+        End If
+
+    End Sub
+
+
 
 End Class

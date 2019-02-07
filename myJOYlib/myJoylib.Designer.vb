@@ -95,6 +95,7 @@ Partial Class myJOYlib
         Me.Controls.Add(Me.pbHeatCoolAction)
         Me.Controls.Add(Me.lblTemp)
         Me.Controls.Add(Me.PictureBox1)
+        Me.DoubleBuffered = True
         Me.Name = "myJOYlib"
         Me.Size = New System.Drawing.Size(94, 168)
         CType(Me.pbFanAction, System.ComponentModel.ISupportInitialize).EndInit()
