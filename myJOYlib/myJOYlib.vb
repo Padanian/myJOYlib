@@ -156,7 +156,7 @@ Public Class myJOYlib
             Me.Size = New Size(31, 56)
 
             lblTemp.Font = New Font("Tahoma", 5, FontStyle.Bold)
-            lblTemp.Location = New Point(3, 7)
+            lblTemp.Location = New Point(1, 7)
             lblFanAction.Visible = False
         End If
 
