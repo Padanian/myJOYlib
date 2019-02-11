@@ -140,17 +140,31 @@ Public Class myJOYlib
         Dim mouseLocation As Point = PointToClient(Control.MousePosition)
         Dim r As Rectangle = New Rectangle(PictureBox1.Location.X, PictureBox1.Location.Y, PictureBox1.Width, PictureBox1.Height)
 
-        If mouseLocation.X > r.Location.X And mouseLocation.Y > r.Location.Y And
+        If Not MouseIsDown Then
+            If mouseLocation.X > r.Location.X And mouseLocation.Y > r.Location.Y And
             mouseLocation.X < r.Width And mouseLocation.Y < r.Height Then
 
-            pbFanAction.Visible = True
-            pbHeatCoolAction.Visible = True
-            Me.Size = New Size(94, 168)
+                pbFanAction.Visible = True
+                pbHeatCoolAction.Visible = True
+                Me.Size = New Size(94, 168)
 
-            lblTemp.Font = New Font("Tahoma", 12, FontStyle.Bold)
-            lblTemp.Location = New Point(17, 22)
-            lblFanAction.Visible = True
-        Else
+                lblTemp.Font = New Font("Tahoma", 12, FontStyle.Bold)
+                lblTemp.Location = New Point(17, 22)
+                lblFanAction.Visible = True
+            Else
+                pbFanAction.Visible = False
+                pbHeatCoolAction.Visible = False
+                Me.Size = New Size(31, 56)
+
+                lblTemp.Font = New Font("Tahoma", 5, FontStyle.Bold)
+                lblTemp.Location = New Point(1, 7)
+                lblFanAction.Visible = False
+            End If
+        End If
+    End Sub
+    Private Sub image_MouseMove(sender As Object, e As MouseEventArgs)
+        If MouseIsDown Then
+
             pbFanAction.Visible = False
             pbHeatCoolAction.Visible = False
             Me.Size = New Size(31, 56)
@@ -158,11 +172,7 @@ Public Class myJOYlib
             lblTemp.Font = New Font("Tahoma", 5, FontStyle.Bold)
             lblTemp.Location = New Point(1, 7)
             lblFanAction.Visible = False
-        End If
 
-    End Sub
-    Private Sub image_MouseMove(sender As Object, e As MouseEventArgs)
-        If MouseIsDown Then
             sender.Parent.Top = sender.Parent.Top + (e.Y - currentY)
             sender.Parent.Left = sender.Parent.Left + (e.X - currentX)
         End If
@@ -174,6 +184,41 @@ Public Class myJOYlib
     End Sub
     Private Sub image_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
         MouseIsDown = False
+    End Sub
+
+    Private Sub btnWiden_Click(sender As Object, e As EventArgs) Handles btnWiden.Click
+        Dim result As DialogResult
+        If btnWiden.Text = ">" Then
+            btnWiden.Visible = False
+
+            RemoveHandler PictureBox1.MouseHover, AddressOf Me_MouseHover
+            RemoveHandler pbFanAction.MouseHover, AddressOf Me_MouseHover
+            RemoveHandler pbHeatCoolAction.MouseHover, AddressOf Me_MouseHover
+            RemoveHandler lblTemp.MouseHover, AddressOf Me_MouseHover
+            RemoveHandler lblFanAction.MouseHover, AddressOf Me_MouseHover
+            RemoveHandler Timer1.Tick, AddressOf Me_MouseHover
+
+
+
+            Dim newtoolbox As New toolbox
+            newtoolbox.SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y - newtoolbox.Height + btnWiden.Height \ 2)
+            result = newtoolbox.ShowDialog()
+
+
+        End If
+
+        If result = DialogResult.Cancel Then
+            btnWiden.Visible = True
+
+            AddHandler PictureBox1.MouseHover, AddressOf Me_MouseHover
+            AddHandler pbFanAction.MouseHover, AddressOf Me_MouseHover
+            AddHandler pbHeatCoolAction.MouseHover, AddressOf Me_MouseHover
+            AddHandler lblTemp.MouseHover, AddressOf Me_MouseHover
+            AddHandler lblFanAction.MouseHover, AddressOf Me_MouseHover
+            AddHandler Timer1.Tick, AddressOf Me_MouseHover
+
+        End If
+
     End Sub
     Private Function MouseIsOverControl(ByVal [Control] As Control) As Boolean
         Dim r = [Control].ClientRectangle

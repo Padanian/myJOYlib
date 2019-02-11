@@ -29,6 +29,7 @@ Partial Class myJOYlib
         Me.pbFanAction = New System.Windows.Forms.PictureBox()
         Me.pbHeatCoolAction = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnWiden = New System.Windows.Forms.Button()
         CType(Me.pbFanAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbHeatCoolAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,10 +95,20 @@ Partial Class myJOYlib
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'btnWiden
+        '
+        Me.btnWiden.Location = New System.Drawing.Point(69, 143)
+        Me.btnWiden.Name = "btnWiden"
+        Me.btnWiden.Size = New System.Drawing.Size(20, 20)
+        Me.btnWiden.TabIndex = 4
+        Me.btnWiden.Text = ">"
+        Me.btnWiden.UseVisualStyleBackColor = True
+        '
         'myJOYlib
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btnWiden)
         Me.Controls.Add(Me.lblFanAction)
         Me.Controls.Add(Me.pbFanAction)
         Me.Controls.Add(Me.pbHeatCoolAction)
@@ -120,4 +131,5 @@ Partial Class myJOYlib
     Friend WithEvents pbFanAction As PictureBox
     Friend WithEvents lblFanAction As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents btnWiden As Button
 End Class
