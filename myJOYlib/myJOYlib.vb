@@ -9,6 +9,8 @@ Public Class myJOYlib
     Shadows Event MouseEnter(ByVal sender As Object, ByVal e As EventArgs)
     Shadows Event MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
     Private ClickNo As Integer
+    Private MouseIsDown As Boolean = False
+    Private currentX, currentY As Integer
 
     Public Property Value As Decimal
         Get
@@ -102,14 +104,44 @@ Public Class myJOYlib
         Me.Size = New Size(31, 56)
 
         lblTemp.Font = New Font("Tahoma", 5, FontStyle.Regular)
-        lblTemp.Location = New Point(5, 7)
+        lblTemp.Location = New Point(3, 7)
         lblFanAction.Visible = False
+
+        AddHandler PictureBox1.MouseHover, AddressOf Me_MouseHover
+        AddHandler pbFanAction.MouseHover, AddressOf Me_MouseHover
+        AddHandler pbHeatCoolAction.MouseHover, AddressOf Me_MouseHover
+        AddHandler lblTemp.MouseHover, AddressOf Me_MouseHover
+        AddHandler lblFanAction.MouseHover, AddressOf Me_MouseHover
+        AddHandler Timer1.Tick, AddressOf Me_MouseHover
+
+        AddHandler PictureBox1.MouseMove, AddressOf image_MouseMove
+        AddHandler pbFanAction.MouseMove, AddressOf image_MouseMove
+        AddHandler pbHeatCoolAction.MouseMove, AddressOf image_MouseMove
+        AddHandler lblTemp.MouseMove, AddressOf image_MouseMove
+        AddHandler lblFanAction.MouseMove, AddressOf image_MouseMove
+
+        AddHandler PictureBox1.MouseDown, AddressOf image_MouseDown
+        AddHandler pbFanAction.MouseDown, AddressOf image_MouseDown
+        AddHandler pbHeatCoolAction.MouseDown, AddressOf image_MouseDown
+        AddHandler lblTemp.MouseDown, AddressOf image_MouseDown
+        AddHandler lblFanAction.MouseDown, AddressOf image_MouseDown
+
+        AddHandler PictureBox1.MouseUp, AddressOf image_MouseUp
+        AddHandler pbFanAction.MouseUp, AddressOf image_MouseUp
+        AddHandler pbHeatCoolAction.MouseUp, AddressOf image_MouseUp
+        AddHandler lblTemp.MouseUp, AddressOf image_MouseUp
+        AddHandler lblFanAction.MouseUp, AddressOf image_MouseUp
 
 
     End Sub
-    Public Sub Me_MouseMove(ByVal sender As Object, ByVal e As EventArgs) Handles PictureBox1.MouseHover
+    Public Sub Me_MouseHover(ByVal sender As Object, ByVal e As EventArgs)
 
-        If ClientRectangle.Contains(PointToClient(Control.MousePosition)) And Me.Size.Width <> 94 Then
+        Dim mouseLocation As Point = PointToClient(Control.MousePosition)
+        Dim r As Rectangle = New Rectangle(PictureBox1.Location.X, PictureBox1.Location.Y, PictureBox1.Width, PictureBox1.Height)
+
+        If mouseLocation.X > r.Location.X And mouseLocation.Y > r.Location.Y And
+            mouseLocation.X < r.Width And mouseLocation.Y < r.Height Then
+
             pbFanAction.Visible = True
             pbHeatCoolAction.Visible = True
             Me.Size = New Size(94, 168)
@@ -123,12 +155,28 @@ Public Class myJOYlib
             Me.Size = New Size(31, 56)
 
             lblTemp.Font = New Font("Tahoma", 5, FontStyle.Bold)
-            lblTemp.Location = New Point(5, 7)
+            lblTemp.Location = New Point(3, 7)
             lblFanAction.Visible = False
         End If
 
     End Sub
-
-
-
+    Private Sub image_MouseMove(sender As Object, e As MouseEventArgs)
+        If MouseIsDown Then
+            sender.Parent.Top = sender.Parent.Top + (e.Y - currentY)
+            sender.Parent.Left = sender.Parent.Left + (e.X - currentX)
+        End If
+    End Sub
+    Private Sub image_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        MouseIsDown = True
+        currentX = e.X
+        currentY = e.Y
+    End Sub
+    Private Sub image_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
+        MouseIsDown = False
+    End Sub
+    Private Function MouseIsOverControl(ByVal [Control] As Control) As Boolean
+        Dim r = [Control].ClientRectangle
+        r.Inflate(15, 15)
+        Return r.Contains([Control].PointToClient(MousePosition))
+    End Function
 End Class

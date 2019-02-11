@@ -22,11 +22,13 @@ Partial Class myJOYlib
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lblTemp = New System.Windows.Forms.Label()
         Me.pbFanAction = New System.Windows.Forms.PictureBox()
         Me.pbHeatCoolAction = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblFanAction = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.pbFanAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbHeatCoolAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,6 +89,11 @@ Partial Class myJOYlib
         Me.lblFanAction.TabIndex = 3
         Me.lblFanAction.Text = "AUTO 0"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 250
+        '
         'myJOYlib
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -112,4 +119,5 @@ Partial Class myJOYlib
     Friend WithEvents pbHeatCoolAction As PictureBox
     Friend WithEvents pbFanAction As PictureBox
     Friend WithEvents lblFanAction As Label
+    Friend WithEvents Timer1 As Timer
 End Class
