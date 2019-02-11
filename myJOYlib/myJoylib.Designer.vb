@@ -24,11 +24,11 @@ Partial Class myJOYlib
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.lblTemp = New System.Windows.Forms.Label()
+        Me.lblFanAction = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.pbFanAction = New System.Windows.Forms.PictureBox()
         Me.pbHeatCoolAction = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.lblFanAction = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.pbFanAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbHeatCoolAction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -44,6 +44,22 @@ Partial Class myJOYlib
         Me.lblTemp.Size = New System.Drawing.Size(63, 19)
         Me.lblTemp.TabIndex = 1
         Me.lblTemp.Text = "99.9°C"
+        '
+        'lblFanAction
+        '
+        Me.lblFanAction.AutoSize = True
+        Me.lblFanAction.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.lblFanAction.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFanAction.Location = New System.Drawing.Point(41, 75)
+        Me.lblFanAction.Name = "lblFanAction"
+        Me.lblFanAction.Size = New System.Drawing.Size(49, 14)
+        Me.lblFanAction.TabIndex = 3
+        Me.lblFanAction.Text = "AUTO 0"
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 250
         '
         'pbFanAction
         '
@@ -70,29 +86,13 @@ Partial Class myJOYlib
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = Global.myJOYlib.My.Resources.Resources.joy1
+        Me.PictureBox1.Image = Global.myJOYlib.My.Resources.Resources.joy2
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(94, 168)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        '
-        'lblFanAction
-        '
-        Me.lblFanAction.AutoSize = True
-        Me.lblFanAction.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.lblFanAction.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFanAction.Location = New System.Drawing.Point(41, 75)
-        Me.lblFanAction.Name = "lblFanAction"
-        Me.lblFanAction.Size = New System.Drawing.Size(49, 14)
-        Me.lblFanAction.TabIndex = 3
-        Me.lblFanAction.Text = "AUTO 0"
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 250
         '
         'myJOYlib
         '

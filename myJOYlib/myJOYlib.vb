@@ -11,6 +11,7 @@ Public Class myJOYlib
     Private ClickNo As Integer
     Private MouseIsDown As Boolean = False
     Private currentX, currentY As Integer
+    Dim newrect As Rectangle
 
     Public Property Value As Decimal
         Get
@@ -101,7 +102,6 @@ Public Class myJOYlib
 
         pbFanAction.Visible = False
         pbHeatCoolAction.Visible = False
-        Me.Size = New Size(31, 56)
 
         lblTemp.Font = New Font("Tahoma", 5, FontStyle.Regular)
         lblTemp.Location = New Point(3, 7)
@@ -134,6 +134,7 @@ Public Class myJOYlib
 
 
     End Sub
+
     Public Sub Me_MouseHover(ByVal sender As Object, ByVal e As EventArgs)
 
         Dim mouseLocation As Point = PointToClient(Control.MousePosition)
@@ -179,4 +180,5 @@ Public Class myJOYlib
         r.Inflate(15, 15)
         Return r.Contains([Control].PointToClient(MousePosition))
     End Function
+
 End Class
