@@ -1,4 +1,4 @@
-﻿
+﻿<Serializable>
 Public Class myJOYlib
 
     Private m_value As Decimal
@@ -51,7 +51,7 @@ Public Class myJOYlib
             Return m_FanAction
         End Get
         Set(FanAction As Integer)
-            If FanAction >= 0 And FanAction <= 256 Then
+            If FanAction >= -256 And FanAction <= 256 Then
                 m_FanAction = FanAction
                 If m_FanAction = 0 Then
                     pbFanAction.Image = Nothing
@@ -65,16 +65,16 @@ Public Class myJOYlib
                 ElseIf m_FanAction = 3 Then
                     pbFanAction.Image = My.Resources.fan
                     lblFanAction.Text = "     3"
-                ElseIf m_FanAction = 256 Then
+                ElseIf m_FanAction = -256 Then
                     pbFanAction.Image = Nothing
                     lblFanAction.Text = ""
-                ElseIf m_FanAction = 255 Then
+                ElseIf m_FanAction = -255 Then
                     pbFanAction.Image = My.Resources.fan
                     lblFanAction.Text = "AUTO 1"
-                ElseIf m_FanAction = 254 Then
+                ElseIf m_FanAction = -254 Then
                     pbFanAction.Image = My.Resources.fan
                     lblFanAction.Text = "AUTO 2"
-                ElseIf m_FanAction = 253 Then
+                ElseIf m_FanAction = -253 Then
                     pbFanAction.Image = My.Resources.fan
                     lblFanAction.Text = "AUTO 3"
                 Else
@@ -201,6 +201,9 @@ Public Class myJOYlib
 
 
             Dim newtoolbox As New toolbox
+            toolbox.nupNodeAddress.Value = nodeAddress
+            toolbox.nupLocationRecognition.Value = locationRecognition
+
             newtoolbox.SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y - newtoolbox.Height + btnWiden.Height \ 2)
             result = newtoolbox.ShowDialog()
 
@@ -216,6 +219,10 @@ Public Class myJOYlib
             AddHandler lblTemp.MouseHover, AddressOf Me_MouseHover
             AddHandler lblFanAction.MouseHover, AddressOf Me_MouseHover
             AddHandler Timer1.Tick, AddressOf Me_MouseHover
+
+            nodeAddress = toolbox.nupNodeAddress.Value
+            locationRecognition = toolbox.nupLocationRecognition.Value
+
 
         End If
 

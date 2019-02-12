@@ -51,7 +51,7 @@ Partial Class myJOYlib
         Me.lblFanAction.AutoSize = True
         Me.lblFanAction.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(235, Byte), Integer))
         Me.lblFanAction.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFanAction.Location = New System.Drawing.Point(41, 75)
+        Me.lblFanAction.Location = New System.Drawing.Point(38, 76)
         Me.lblFanAction.Name = "lblFanAction"
         Me.lblFanAction.Size = New System.Drawing.Size(49, 14)
         Me.lblFanAction.TabIndex = 3
@@ -66,7 +66,7 @@ Partial Class myJOYlib
         '
         Me.pbFanAction.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(235, Byte), Integer))
         Me.pbFanAction.Image = Global.myJOYlib.My.Resources.Resources.fan
-        Me.pbFanAction.Location = New System.Drawing.Point(48, 46)
+        Me.pbFanAction.Location = New System.Drawing.Point(46, 46)
         Me.pbFanAction.Name = "pbFanAction"
         Me.pbFanAction.Size = New System.Drawing.Size(32, 32)
         Me.pbFanAction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -77,7 +77,7 @@ Partial Class myJOYlib
         '
         Me.pbHeatCoolAction.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(235, Byte), Integer))
         Me.pbHeatCoolAction.Image = Global.myJOYlib.My.Resources.Resources.thermominus
-        Me.pbHeatCoolAction.Location = New System.Drawing.Point(13, 46)
+        Me.pbHeatCoolAction.Location = New System.Drawing.Point(11, 46)
         Me.pbHeatCoolAction.Name = "pbHeatCoolAction"
         Me.pbHeatCoolAction.Size = New System.Drawing.Size(32, 32)
         Me.pbHeatCoolAction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
