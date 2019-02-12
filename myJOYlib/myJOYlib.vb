@@ -1,4 +1,4 @@
-﻿<Serializable>
+﻿<Serializable()>
 Public Class myJOYlib
 
     Private m_value As Decimal
@@ -84,8 +84,6 @@ Public Class myJOYlib
             End If
         End Set
     End Property
-
-
 
 
     Public Sub New()
