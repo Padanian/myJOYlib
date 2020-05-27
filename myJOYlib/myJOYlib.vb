@@ -4,8 +4,9 @@ Public Class myJOYlib
     Private m_value As Decimal
     Private m_HeatCoolAction As Integer
     Private m_FanAction As Integer
-    Public Property nodeAddress As Integer
-    Public Property locationRecognition As Integer
+    Public Property TBNode As Integer
+    Public Property TBFirmware As String
+    Public Property TBTipo As String
     Shadows Event MouseEnter(ByVal sender As Object, ByVal e As EventArgs)
     Shadows Event MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
     Private ClickNo As Integer
@@ -95,8 +96,9 @@ Public Class myJOYlib
         Value = 21.0
         HeatCoolAction = 0
         FanAction = 0
-        nodeAddress = 32
-        locationRecognition = 0
+        TBnode = 32
+        TBFirmware = ""
+        TBTipo = ""
 
         pbFanAction.Visible = False
         pbHeatCoolAction.Visible = False
@@ -199,8 +201,9 @@ Public Class myJOYlib
 
 
             Dim newtoolbox As New toolbox
-            toolbox.nupNodeAddress.Value = nodeAddress
-            toolbox.nupLocationRecognition.Value = locationRecognition
+            newtoolbox.lblTBNode.Text = TBNode
+            newtoolbox.lblTBFirmware.Text = TBFirmware
+            newtoolbox.lblTBTipo.Text = TBTipo
 
             newtoolbox.SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y - newtoolbox.Height + btnWiden.Height \ 2)
             result = newtoolbox.ShowDialog()
@@ -218,8 +221,9 @@ Public Class myJOYlib
             AddHandler lblFanAction.MouseHover, AddressOf Me_MouseHover
             AddHandler Timer1.Tick, AddressOf Me_MouseHover
 
-            nodeAddress = toolbox.nupNodeAddress.Value
-            locationRecognition = toolbox.nupLocationRecognition.Value
+            TBNode = CInt(toolbox.lblTBNode.Text)
+            TBFirmware = toolbox.lblTBFirmware.Text
+            TBTipo = toolbox.lblTBTipo.Text
 
 
         End If
